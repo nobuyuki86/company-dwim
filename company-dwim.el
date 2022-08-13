@@ -74,9 +74,11 @@
            (t
             (let ((company-common (and company-common
                                        (company-dwim-maybe-trim-newline company-common))))
-              (company-preview-show-at-point
-               (point)
-               (company-dwim-maybe-trim-newline (nth company-selection company-candidates)))))))
+              (if company-selection
+		  (company-preview-show-at-point
+		   (point)
+		   (company-dwim-maybe-trim-newline (nth company-selection company-candidates)))
+		(company-preview-hide))))))
     (hide
      (company-preview-hide)
      (company-dwim-overlay-hide))))
@@ -102,5 +104,11 @@
 (defun company-dwim-select-previous (&optional arg)
   (interactive "p")
   (company-dwim-select-next (if arg (- arg) -1)))
+
+(defun company-dwim-complete-or-newline ()
+  (interactive)
+  (if company-dwim-half-committed
+      (company-complete-selection)
+    (newline-and-indent)))
 
 (provide 'company-dwim)
