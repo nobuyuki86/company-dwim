@@ -75,10 +75,10 @@
             (let ((company-common (and company-common
                                        (company-dwim-maybe-trim-newline company-common))))
               (if company-selection
-		  (company-preview-show-at-point
-		   (point)
-		   (company-dwim-maybe-trim-newline (nth company-selection company-candidates)))
-		(company-preview-hide))))))
+                  (company-preview-show-at-point
+                   (point)
+                   (company-dwim-maybe-trim-newline (nth company-selection company-candidates)))
+                (company-preview-hide))))))
     (hide
      (company-preview-hide)
      (company-dwim-overlay-hide))))
