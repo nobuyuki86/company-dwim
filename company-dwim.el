@@ -1,3 +1,9 @@
+;;; company-dwim.el --- Company port of ac-dwim
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'company)
 (require 'cl-lib)
 
@@ -112,3 +118,4 @@
     (newline-and-indent)))
 
 (provide 'company-dwim)
+;;; company-dwim.el ends here
